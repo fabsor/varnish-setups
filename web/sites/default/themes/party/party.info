@@ -1,5 +1,6 @@
 name = Drupal 7 release party
 version = 1.0
+core = 7.x
 base theme = bartik
 
 regions[header] = Header
