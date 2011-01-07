@@ -2,12 +2,12 @@
 
   ServerName drupal7.nodeone.se:80
 
-  CustomLog /srv/www/drupal7/log/access.log combined
-  ErrorLog  /srv/www/drupal7/log/error.log
+  CustomLog /srv/www/party/log/access.log combined
+  ErrorLog  /srv/www/party/log/error.log
 
-  DocumentRoot /srv/www/drupal7/web
+  DocumentRoot /srv/www/party/web
 
-  <Directory /srv/www/drupal7/web>
+  <Directory /srv/www/party/web>
 
     # Allow from all as default.
     Order deny,allow
@@ -89,7 +89,7 @@
   </Directory>
   
   # Directory for private files. Use together with downld module.
-  <Directory /srv/www/drupal7/web/sites/hallbartsamhalle.se/files/private>
+  <Directory /srv/www/party/web/sites/default/files/private>
     Deny from all
   </Directory>      
 
