@@ -1,14 +1,13 @@
 <VirtualHost *:80>
 
-  ServerName hallbartsamhalle.se:80
-  ServerAlias www.hallbartsamhalle.se dev.hallbartsamhalle.se loc.hallbartsamhalle.se
+  ServerName drupal7.party.se:80
 
-  CustomLog /srv/www/155/log/access.log combined
-  ErrorLog  /srv/www/155/log/error.log
+  CustomLog /srv/www/party/log/access.log combined
+  ErrorLog  /srv/www/party/log/error.log
 
-  DocumentRoot /srv/www/155/web
+  DocumentRoot /srv/www/party/web
 
-  <Directory /srv/www/155/web>
+  <Directory /srv/www/party/web>
 
     # Allow from all as default.
     Order deny,allow
@@ -73,10 +72,11 @@
       RewriteRule ^cron.php$ - [L]
 
       # Enforce domain.
-      RewriteCond %{HTTP_HOST} !^www.hallbartsamhalle.se(:.*)?$
-      RewriteCond %{HTTP_HOST} !^dev.hallbartsamhalle.se(:.*)?$
-      RewriteCond %{HTTP_HOST} ^(?:.*?)(:.*)?$
-      RewriteRule ^(.*)$ http://www.hallbartsamhalle.se%1/$1 [L,R=301]
+      #RewriteCond %{HTTP_HOST} !^www.hallbartsamhalle.se(:.*)?$
+      #RewriteCond %{HTTP_HOST} !^dev.hallbartsamhalle.se(:.*)?$
+      #RewriteCond %{HTTP_HOST} !^loc.hallbartsamhalle.se(:.*)?$
+      #RewriteCond %{HTTP_HOST} ^(?:.*?)(:.*)?$
+      #RewriteRule ^(.*)$ http://www.hallbartsamhalle.se%1/$1 [L,R=301]
 
       # Route requests to Drupal's front controller.
       RewriteCond %{REQUEST_FILENAME} !-f
@@ -89,7 +89,7 @@
   </Directory>
   
   # Directory for private files. Use together with downld module.
-  <Directory /srv/www/155/web/sites/hallbartsamhalle.se/files/private>
+  <Directory /srv/www/party/web/sites/default/files/private>
     Deny from all
   </Directory>      
 
@@ -108,16 +108,16 @@
   # To call install.php from external machine, use port forwarding, e.g.
   # ssh -L 8080:127.0.0.1:80 green8.nodeone.se
   <Location /install.php>
-    Deny from all
-    Allow from 127.0.0.1
+    #Deny from all
+    #Allow from 127.0.0.1
   </Location> 
 
   # Only allow update.php to be executed from localhost.
   # To call update.php from external machine, use port forwarding, e.g.
   # ssh -L 8080:127.0.0.1:80 green8.nodeone.se
   <Location /update.php>
-    Deny from all
-    Allow from 127.0.0.1
+    #Deny from all
+    #Allow from 127.0.0.1
   </Location> 
 
 </VirtualHost>
