@@ -1,8 +1,8 @@
 class apache2config {
-  exec { "ln -s /srv/vhosts sites-enabled":
-    unless => test "/bin/readlink /srv/vhosts" = "/srv/vhosts",
+  exec { "setup-path":
+    cwd => "/etc/apache2/",
+    command => "/bin/ln -s /srv/vhosts sites-enabled",
     notify => Exec["reload-apache2"],
-    require => Package[$require],
   }
 
    # Notify this when apache needs a reload. This is only needed when
