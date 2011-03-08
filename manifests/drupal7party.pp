@@ -1,12 +1,7 @@
-class lucid32 {
-  package { "apache2":
-    ensure => present,
-  }
+import 'components/*.pp'
+import 'config/*.pp'
 
-  service { "apache2":
-    ensure => running,
-    require => Package["apache2"],
-  }
-}
-
-include lucid32
+include mysql
+include php
+include apache
+include apache2config
