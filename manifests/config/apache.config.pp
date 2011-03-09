@@ -1,7 +1,15 @@
 class apache2config {
+  
+  exec { "pre-config":
+   cwd => "/etc/apache2/",
+   command => "/bin/rm -rf sites-enabled" ,
+   unless => "/usr/bin/test -L sites-enabled",
+  }
+
   exec { "setup-path":
     cwd => "/etc/apache2/",
     command => "/bin/ln -s /srv/vhosts sites-enabled",
+    unless => "/usr/bin/test -L sites-enabled",
     notify => Exec["reload-apache2"],
   }
 
