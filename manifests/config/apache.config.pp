@@ -4,6 +4,7 @@ class apache2config {
     cwd => "/etc/apache2/sites-available",
     command => "/bin/ln -s /srv/www/drupal7party/vhosts/drupal7.party.se",
     unless => "/usr/bin/test -L drupal7.party.se",
+    require => Class["apache"],
   }
   
   exec { "add-enabled-site":
@@ -11,6 +12,7 @@ class apache2config {
     command => "/usr/sbin/a2ensite drupal7.party.se",
     unless => "/usr/bin/test -L drupal7.party.se",
     notify => Exec["reload-apache2"],
+    require => Class["apache"],
   }
 
    # Notify this when apache needs a reload. This is only needed when
@@ -20,10 +22,12 @@ class apache2config {
    exec { "reload-apache2":
       command => "/etc/init.d/apache2 reload",
       refreshonly => true,
+      require => Class["apache"],
    }
 
    exec { "force-reload-apache2":
       command => "/etc/init.d/apache2 force-reload",
       refreshonly => true,
+      require => Class["apache"],
    }
 }
