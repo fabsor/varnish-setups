@@ -1,15 +1,15 @@
 class apache2config {
   
-  exec { "pre-config":
-   cwd => "/etc/apache2/",
-   command => "/bin/rm -rf sites-enabled" ,
-   unless => "/usr/bin/test -L sites-enabled",
+  exec { "add-available-site":
+    cwd => "/etc/apache2/sites-available",
+    command => "/bin/ln -s /srv/www/drupal7party/vhosts/drupal7.party.se",
+    unless => "/usr/bin/test -L drupal7.party.se",
   }
-
-  exec { "setup-path":
-    cwd => "/etc/apache2/",
-    command => "/bin/ln -s /srv/vhosts sites-enabled",
-    unless => "/usr/bin/test -L sites-enabled",
+  
+  exec { "add-enabled-site":
+    cwd => "/etc/apache2/sites-enabled",
+    command => "/usr/sbin/a2ensite drupal7.party.se",
+    unless => "/usr/bin/test -L drupal7.party.se",
     notify => Exec["reload-apache2"],
   }
 
