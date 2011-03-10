@@ -13,7 +13,7 @@ class apache {
   }
   
   vhost { $vhosts:
-    /* require => Package["apache2"] */
+    require => Package["apache2"]
   }
   
   define vhost() {
