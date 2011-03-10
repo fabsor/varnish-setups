@@ -1,16 +1,12 @@
-exec { "apt-get update":
-  command => "/usr/bin/apt-get update",
+exec { "apt_update":
+  command => "/usr/bin/apt-get update"
 }
 
-Package {
-  require => Exec["apt-get update"]
-}
+Package { require => Exec["apt_update"] }
 
 
-import 'components/*.pp'
-import 'config/*.pp'
+import "components/*.pp"
 
-include mysql
-include php
 include apache
-include apache2config
+include php
+include mysql
