@@ -383,6 +383,16 @@ $conf['reverse_proxy_addresses'] = array('127.0.0.1',);
  */
 $conf['omit_vary_cookie'] = TRUE;
 
+ /**
+  * When Drupal serves a cached page, it still invokes hook_boot
+  * and hook_exit in all modules by default. This letś modules alter the page
+  * even when it is cached, which is required for some modules to function properly.
+  * In order to support reverse proxy caches this option needs to be disabled,
+  * since no code can be executed in Drupal when reverse proxy is used for
+  * caching pages for anonymous users.
+  */
+$conf['page_cache_invoke_hooks'] = FALSE;
+
 /**
  * CSS/JS aggregated file gzip compression:
  *
