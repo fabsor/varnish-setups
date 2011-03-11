@@ -10,4 +10,8 @@ class mysql {
     ensure    => running,
     subscribe => Package[mysql-server],
   }
+  exec { "create-database":
+    command => "/usr/bin/mysqladmin create drupal7"
+
+  }
 }
