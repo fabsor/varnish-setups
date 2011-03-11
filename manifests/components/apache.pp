@@ -1,6 +1,6 @@
 class apache {
   $packages = [ "apache2" ]
-  $vhosts = [ "drupal7.party.se" ]
+  $vhosts = [ "drupal7.party.se", "drupal6.party.se" ]
   
   package { $packages:
     ensure => installed,
