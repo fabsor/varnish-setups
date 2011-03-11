@@ -10,3 +10,4 @@ import "components/*.pp"
 include apache
 include php
 include mysql
+include varnish
