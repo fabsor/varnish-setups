@@ -1,6 +1,6 @@
 class mysql {
   $packages = [ "mysql-client", "mysql-common", "mysql-server" ]
-  
+  $databases = [ "drupal7", "drupal6" ]
   package { $packages:
     ensure => installed,
   }
@@ -10,8 +10,15 @@ class mysql {
     ensure    => running,
     subscribe => Package[mysql-server],
   }
-  exec { "create-database":
-    command => "/usr/bin/mysqladmin create drupal7"
-
+  
+  database { $databases:
+    require => Package[mysql-server]
+  }
+  
+  define database() {
+    exec { "create-$name":
+      command => "/usr/bin/mysqladmin create $name",
+      unless => "/usr/bin/mysql -uroot ${name}"
+    }
   }
 }
