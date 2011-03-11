@@ -1,0 +1,3 @@
+[submodule "web/sites/all/modules/varnish"]
+	path = web/sites/all/modules/varnish
+	url = http://git.drupal.org/project/varnish.git
