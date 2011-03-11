@@ -5,9 +5,9 @@
   CustomLog /srv/www/party/log/access.log combined
   ErrorLog  /srv/www/party/log/error.log
 
-  DocumentRoot /srv/www/drupal6
+  DocumentRoot /srv/www/party/drupal6
 
-  <Directory /srv/www/drupal6>
+  <Directory /srv/www/party/drupal6>
 
     # Allow from all as default.
     Order deny,allow
@@ -82,7 +82,7 @@
   </Directory>
   
   # Directory for private files. Use together with downld module.
-  <Directory /srv/www/drupal6/sites/default/files/private>
+  <Directory /srv/www/party/drupal6/sites/default/files/private>
     Deny from all
   </Directory>      
 
