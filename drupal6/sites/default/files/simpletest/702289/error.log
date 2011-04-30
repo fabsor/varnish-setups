@@ -1,0 +1,1 @@
+[27-Mar-2011 04:41:39] PHP Fatal error:  Call to undefined function comment_delete() in /srv/varnish/drupal6/sites/all/modules/varnish/varnish.test on line 212

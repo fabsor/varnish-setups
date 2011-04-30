@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Install varnish 2.0 on an ubuntu server.
+
+cd /tmp
+svn co http://www.varnish-cache.org/svn/branches/2.0/
+cd /tmp/2.0/varnish-cache
+dpkg-buildpackage
+cd ..
+dpkg -i libvarnish1_2.0.6-*.deb
+dpkg -i varnish_2.0.6-*.deb
+cd ..
+rm -r 2.0

@@ -270,3 +270,4 @@ ini_set('url_rewriter.tags',        '');
  * threshold has elapsed since installation.
  */
 # $conf['pressflow_smart_start'] = TRUE;
+$conf['varnish_control_key'] = '0c806575-1e07-417b-a92d-1a3a9b7e0cd0';
